@@ -54,9 +54,6 @@
     <Content Include="images\Square71x71Logo.scale-240.png" />
     <Content Include="images\SplashScreen.scale-240.png" />
     <Content Include="images\StoreLogo.scale-240.png" />
-    <Content Include="css\ui-themed.css" />
-    <Content Include="css\ui-themed.theme-dark.css" />
-    <Content Include="css\ui-themed.theme-light.css" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Phone.WinJS.2.1, Version=1.0" />
