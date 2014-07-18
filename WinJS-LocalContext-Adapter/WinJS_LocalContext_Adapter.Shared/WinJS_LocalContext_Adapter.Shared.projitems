@@ -7,12 +7,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)bower_components\chai\chai.js" />
-    <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\dist\jquery.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\jquery.js" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.css" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
     <Content Include="$(MSBuildThisFileDirectory)default.html" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\jquery-winjs.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\msapp-wrap.js" />
     <Content Include="$(MSBuildThisFileDirectory)tests\test-jquery.js" />
   </ItemGroup>
 </Project>

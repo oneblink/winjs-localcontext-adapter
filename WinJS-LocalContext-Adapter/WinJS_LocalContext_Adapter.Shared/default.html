@@ -5,9 +5,8 @@
     <title>WinJS_LocalContext_Adapter.WindowsPhone</title>
 
     <!-- WinJS references -->
-    <!-- At runtime, ui-themed.css resolves to ui-themed.light.css or ui-themed.dark.css 
+    <!-- At runtime, ui-themed.css resolves to ui-themed.light.css or ui-themed.dark.css
     based on the user’s theme setting. This is part of the MRT resource loading functionality. -->
-    <link href="/css/ui-themed.css" rel="stylesheet" />
     <script src="//Microsoft.Phone.WinJS.2.1/js/base.js"></script>
     <script src="//Microsoft.Phone.WinJS.2.1/js/ui.js"></script>
 
@@ -19,11 +18,22 @@
     <link rel="stylesheet" href="/bower_components/mocha/mocha.css" />
     <script src="bower_components/chai/chai.js"></script>
     <script src="bower_components/mocha/mocha.js"></script>
-    <script>mocha.setup('tdd');</script>
+    <script>
+        var assert = chai.assert;
+        mocha.setup('tdd');
+    </script>
+
+    <!-- libraries under test -->
+    <script src="/bower_components/jquery/jquery.js"></script>
+
+    <!-- adapter code -->
+    <script src="/js/msapp-wrap.js"></script>
+    <script src="/js/jquery-winjs.js"></script>
 </head>
 <body>
     <div id="mocha"></div>
 
+    <script src="/tests/test-jquery.js"></script>
     <script>mocha.run();</script>
 </body>
 </html>
