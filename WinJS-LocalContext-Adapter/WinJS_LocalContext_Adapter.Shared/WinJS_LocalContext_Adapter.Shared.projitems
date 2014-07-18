@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7e919375-fea0-42f9-9489-a47107c189f7</SharedGUID>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\chai\chai.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\dist\jquery.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.css" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.js" />
+    <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
+    <Content Include="$(MSBuildThisFileDirectory)default.html" />
+    <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)tests\test-jquery.js" />
+  </ItemGroup>
+</Project>

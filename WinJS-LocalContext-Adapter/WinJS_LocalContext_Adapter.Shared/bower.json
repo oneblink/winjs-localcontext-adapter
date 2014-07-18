@@ -1,0 +1,23 @@
+{
+  "name": "WinJS_LocalContext_Adapter.Shared",
+  "version": "0.0.0",
+  "authors": [
+    "Ron Waldon <jokeyrhyme@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "BSD 3-Clause",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~1.20.1",
+    "chai": "~1.9.1"
+  }
+}
