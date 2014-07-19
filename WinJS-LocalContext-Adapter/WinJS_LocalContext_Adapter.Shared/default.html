@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-csp="">
 <head>
     <meta charset="utf-8" />
     <title>WinJS_LocalContext_Adapter.WindowsPhone</title>
@@ -24,16 +24,21 @@
     </script>
 
     <!-- libraries under test -->
-    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/jquery/jquery.min.js"></script>
 
     <!-- adapter code -->
     <script src="/js/msapp-wrap.js"></script>
     <script src="/js/jquery-winjs.js"></script>
+
+    <!-- libraries under test -->
+    <link rel="stylesheet" href="/bower_components/angular/angular-csp.css" />
+    <script src="/bower_components/angular/angular.min.js"></script>
 </head>
 <body>
     <div id="mocha"></div>
 
     <script src="/tests/test-jquery.js"></script>
+    <script src="/tests/test-angular.js"></script>
     <script>mocha.run();</script>
 </body>
 </html>

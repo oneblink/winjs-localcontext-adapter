@@ -13,7 +13,7 @@ functioning within the local context.
 
 - DO NOT link to remote resources from your local context
 
-## Usage
+## Instructions
 
 - include msapp-wrap.js in your project's Start Page (e.g. via a script tag)
 
@@ -23,3 +23,33 @@ functioning within the local context.
   initialisation: https://github.com/jquery/sizzle/issues/274
 
 - after jQuery, but before anything that uses jQuery, include jquery-winjs.js
+
+```html
+<script src="jquery.min.js"></script>
+<script src="msapp-wrap.js"></script>
+<script src="jquery-winjs.js"></script>
+```
+
+### Angular.JS
+
+- include jQuery, following the directions above
+
+- below / after that, include Angular.JS
+
+- Angular.JS will detect the adjusted jQuery and use it for DOM manipulation
+
+```html
+<script src="jquery.min.js"></script>
+<script src="msapp-wrap.js"></script>
+<script src="jquery-winjs.js"></script>
+<script src="angular.min.js"></script>
+```
+
+- use the ngCsp directive, so that Angular.JS will avoid calling `eval()`
+
+```html
+<html ng-csp="">
+<head>
+  <link rel="stylesheet" href="angular-csp.css" />
+</head>
+```

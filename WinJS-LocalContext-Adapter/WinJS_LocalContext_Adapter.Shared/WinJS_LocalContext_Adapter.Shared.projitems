@@ -6,8 +6,14 @@
     <SharedGUID>7e919375-fea0-42f9-9489-a47107c189f7</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\angular\angular-csp.css" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\angular\angular.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\angular\angular.min.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\angular\angular.min.js.map" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\chai\chai.js" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\jquery.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\jquery.min.js" />
+    <Content Include="$(MSBuildThisFileDirectory)bower_components\jquery\jquery.min.map" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.css" />
     <Content Include="$(MSBuildThisFileDirectory)bower_components\mocha\mocha.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
@@ -15,6 +21,7 @@
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\jquery-winjs.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\msapp-wrap.js" />
+    <Content Include="$(MSBuildThisFileDirectory)tests\test-angular.js" />
     <Content Include="$(MSBuildThisFileDirectory)tests\test-jquery.js" />
   </ItemGroup>
 </Project>
