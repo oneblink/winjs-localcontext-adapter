@@ -120,6 +120,7 @@
       [
         'after',
         'before',
+        'replaceWith',
         'wrap',
         'wrapAll'
       ].forEach(function (method) {
@@ -144,7 +145,8 @@
 
       [
         'insertAfter',
-        'insertBefore'
+        'insertBefore',
+        'replaceAll'
       ].forEach(function (method) {
         test('jQuery.fn.' + method, function () {
           var unknown$;
@@ -222,23 +224,69 @@
       });
     });
 
-    [
-      'attr',
-      'clone',
-      'css',
-      'offset',
-      'outerHeight',
-      'outerWidth',
-      'position',
-      'prop',
-      'removeAttr',
-      'removeProp',
-      'replaceAll',
-      'replaceWith',
-      'scrollLeft',
-      'scrollTop'
-    ].forEach(function (method) {
-      test('jQuery.fn.' + method);
+    test('(unsafe) attributes: attr & removeAttr', function () {
+      assert.doesNotThrow(function () {
+        fixture$.attr('onclick', 'javascript:alert()');
+      }, 'jQuery.fn.attr');
+      assert.equal(fixture$.attr('onclick'), 'javascript:alert()');
+      fixture$.removeAttr('onclick');
+      assert.isUndefined(fixture$.attr('onclick'));
+    });
+
+    test('(unsafe) attributes: css', function () {
+      assert.doesNotThrow(function () {
+        fixture$.css('display', 'none');
+      }, 'jQuery.fn.css');
+      assert.equal(fixture$.css('display'), 'none');
+    });
+
+    test('(safe) properties: prop & removeProp', function () {
+      assert.doesNotThrow(function () {
+        fixture$.prop('hidden', true);
+      }, 'jQuery.fn.prop');
+      assert.isTrue(fixture$.prop('hidden'));
+      fixture$.removeProp('hidden');
+      assert.isTrue(fixture$.prop('hidden'), 'removeProp has no effect on hidden');
+    });
+
+    suite('safe methods that return numbers and coordinates', function () {
+
+      [
+        'outerHeight',
+        'outerWidth',
+        'scrollLeft',
+        'scrollTop'
+      ].forEach(function (method) {
+        test('jQuery.fn.' + method, function () {
+          var result;
+          assert.doesNotThrow(function () {
+            result = fixture$[method].call(fixture$);
+          });
+          assert.isNumber(result);
+        });
+      });
+
+      [
+        'offset',
+        'position'
+      ].forEach(function (method) {
+        test('jQuery.fn.' + method, function () {
+          var result;
+          assert.doesNotThrow(function () {
+            result = fixture$[method].call(fixture$);
+          });
+          assert.isObject(result);
+          assert.isNumber(result.top);
+          assert.isNumber(result.left);
+        });
+      });
+
+    });
+
+    test('jQuery.fn.clone', function () {
+      assert.doesNotThrow(function () {
+        fixture$.clone(true, true);
+      });
     });
 
     teardown(function () {
