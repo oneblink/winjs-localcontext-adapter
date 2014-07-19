@@ -23,7 +23,7 @@
       fixture$ = $('#fixture');
     });
 
-    suite('safe methods that take a string', function () {
+    suite('safe methods that set a string', function () {
       [
         'addClass',
         'hasClass',
@@ -37,6 +37,26 @@
           });
         });
       });
+
+      (function (method) {
+        test('jQuery.fn.' + method, function () {
+          assert.doesNotThrow(function () {
+            fixture$[method].call(fixture$, 'abc');
+          });
+          assert.equal('abc', fixture$.text());
+        });
+      }('text'));
+
+      (function (method) {
+        var input$;
+        input$ = $('<input type="text" />');
+        test('jQuery.fn.' + method, function () {
+          assert.doesNotThrow(function () {
+            input$[method].call(input$, 'abc');
+          });
+          assert.equal('abc', input$.val());
+        });
+      }('val'));
     });
 
     suite('safe methods that set a number', function () {
@@ -56,6 +76,7 @@
     });
 
     suite('unsafe methods that set innerHTML', function () {
+
       [
         'append',
         'html',
@@ -68,6 +89,21 @@
           assert.equal(unknown, fixture.innerHTML);
         });
       });
+
+      [
+        'appendTo',
+        'prependTo'
+      ].forEach(function (method) {
+        test('jQuery.fn.' + method, function () {
+          var unknown$;
+          unknown$ = $(unknown);
+          assert.doesNotThrow(function () {
+            unknown$[method].call(unknown$, fixture$);
+          });
+          assert.equal(unknown, fixture.innerHTML);
+        });
+      });
+
     });
 
     suite('unsafe methods that affect parent\'s innerHTML', function () {
@@ -87,7 +123,6 @@
         'wrap',
         'wrapAll'
       ].forEach(function (method) {
-
         test('jQuery.fn.' + method, function () {
           assert.doesNotThrow(function () {
             target$[method].call(target$, unknown);
@@ -95,11 +130,9 @@
           target$.remove();
           assert.equal(unknown, fixture.innerHTML);
         });
-
       });
 
       (function (method) {
-
         test('jQuery.fn.' + method, function () {
           assert.doesNotThrow(function () {
             fixture$[method].call(fixture$, unknown);
@@ -107,14 +140,12 @@
           target$.remove();
           assert.equal(unknown, fixture.innerHTML);
         });
-
       }('wrapInner'));
 
       [
         'insertAfter',
         'insertBefore'
       ].forEach(function (method) {
-
         test('jQuery.fn.' + method, function () {
           var unknown$;
           unknown$ = $(unknown);
@@ -124,7 +155,6 @@
           target$.remove();
           assert.equal(unknown, fixture.innerHTML);
         });
-
       });
 
       teardown(function () {
@@ -151,15 +181,39 @@
         'detach',
         'remove'
       ].forEach(function (method) {
-
         test('jQuery.fn.' + method, function () {
           assert.doesNotThrow(function () {
             target$[method].call(target$);
           });
+          assert.ok(!target.parentNode, 'div no longer has a parent');
           assert.equal('', fixture.innerHTML);
         });
-
       });
+
+      (function (method) {
+        test('jQuery.fn.' + method, function () {
+          assert.doesNotThrow(function () {
+            fixture$[method].call(fixture$);
+          });
+          assert.equal('', fixture.innerHTML);
+        });
+      }('empty'));
+
+      (function (method) {
+        test('jQuery.fn.' + method, function () {
+          var div, div$;
+          div = document.createElement('div');
+          fixture.appendChild(div);
+          div.appendChild(target);
+          console.log(fixture.innerHTML);
+          assert.doesNotThrow(function () {
+            target$[method].call(target$);
+          });
+          console.log(fixture.innerHTML);
+          assert.ok(!div.parentNode, 'intermediate div no longer has a parent');
+          assert.equal(target.outerHTML, fixture.innerHTML);
+        });
+      }('unwrap'));
 
       teardown(function () {
         target = null;
@@ -171,26 +225,20 @@
     });
 
     [
-      'appendTo',
       'attr',
       'clone',
       'css',
-      'empty',
       'offset',
       'outerHeight',
       'outerWidth',
       'position',
-      'prependTo',
       'prop',
       'removeAttr',
       'removeProp',
       'replaceAll',
       'replaceWith',
       'scrollLeft',
-      'scrollTop',
-      'text',
-      'unwrap',
-      'val'
+      'scrollTop'
     ].forEach(function (method) {
       test('jQuery.fn.' + method);
     });
