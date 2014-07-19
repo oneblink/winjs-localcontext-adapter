@@ -13,7 +13,7 @@
     var fixture, fixture$, unknown;
 
     setup(function () {
-      unknown = '<unknown></unknown>';
+      unknown = '<unknown onclick=""></unknown>';
 
       fixture = document.createElement('div');
       fixture.setAttribute('id', 'fixture');
@@ -205,11 +205,9 @@
           div = document.createElement('div');
           fixture.appendChild(div);
           div.appendChild(target);
-          console.log(fixture.innerHTML);
           assert.doesNotThrow(function () {
             target$[method].call(target$);
           });
-          console.log(fixture.innerHTML);
           assert.ok(!div.parentNode, 'intermediate div no longer has a parent');
           assert.equal(target.outerHTML, fixture.innerHTML);
         });

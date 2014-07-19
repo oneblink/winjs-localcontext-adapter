@@ -7,6 +7,7 @@
     return;
   }
 
+  $.buildFragment = msappWrapUnsafeFunction($.buildFragment);
   $.fn.domManip = msappWrapUnsafeFunction($.fn.domManip);
   $.fn.html = msappWrapUnsafeFunction($.fn.html);
 
