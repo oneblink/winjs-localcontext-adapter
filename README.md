@@ -3,6 +3,10 @@
 Shims and other snippets to assist with use of traditional JavaScript libraries
 within the locked-down local context of WinJS
 
+## Upstream
+
+Microsoft has a similar (and likely better) solution: https://github.com/MsopenTech/winstore-jscompat
+
 ## Warning
 
 Microsoft deliberately prevents certain unsafe JavaScript and DOM practices from
